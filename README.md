@@ -37,3 +37,9 @@ A rebuild of [Danielkaas94/DoomFaceBattery](https://github.com/Danielkaas94/Doom
 <a href="https://www.moddb.com/mods/thy-dark-rooms-of-finals" title="View ✝ Thy Dark Rooms of Finals ✝ on Mod DB" target="_blank"><img src="https://media.moddb.com/images/global/moddb.png" alt="✝ Thy Dark Rooms of Finals ✝" /></a>
 
 </div>
+
+
+[Join CodeWars with me! 👨‍💻](http://codewars.com/r/hGyTsQ)
+<p>
+  <img alt="CodeWars Badge" src="https://www.codewars.com/users/Danielkaas94/badges/large">
+</p>
