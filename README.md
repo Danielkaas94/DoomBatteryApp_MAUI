@@ -6,8 +6,18 @@ Battery Percentage = Health %
 
 A rebuild of [Danielkaas94/DoomFaceBattery](https://github.com/Danielkaas94/DoomFaceBattery), but made for MAUI
 
+<div align="center">
+
+[<img width="500" src="https://img.youtube.com/vi/6iFgIBqcF2s/maxresdefault.jpg">](https://youtu.be/6iFgIBqcF2s) 
+>Doom Battery App .NET MAUI - YouTube Short 🔋⚡
+
+</div>
+
+
+
+
 <p align="center">
-    <img alt="Doom Guy - First Screenshot!" width="800" src="https://github.com/Danielkaas94/DoomBatteryApp_MAUI/blob/master/DoomBatteryApp_MAUI/Resources/doombattery.png?raw=true">
+    <img alt="Doom Guy - First Screenshot!" width="700" src="https://github.com/Danielkaas94/DoomBatteryApp_MAUI/blob/master/DoomBatteryApp_MAUI/Resources/doombattery.png?raw=true">
 </p>
 
     First Screen shot!
