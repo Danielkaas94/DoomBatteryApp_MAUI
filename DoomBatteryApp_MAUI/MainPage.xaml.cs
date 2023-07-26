@@ -33,7 +33,7 @@ public partial class MainPage : ContentPage
 
             // Start with a big smile? 😁
 
-            DoomGuyImage.Source = "gm1.png";
+            DoomGuyImage.Source = "gm3.png";
             //DoomGuyImage.Source = "gm1.png";
 
             await System.Threading.Tasks.Task.Delay(delay);
