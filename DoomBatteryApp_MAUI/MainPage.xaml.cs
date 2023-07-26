@@ -106,22 +106,7 @@ public partial class MainPage : ContentPage
         }
         else // Mortal Man -- Gods Do Not Bleed 🤕🩸
         {
-
-
-            // Damage face & Sound effect, if battery goes down since last check
-            if (batteryLevel < batteryLevel_old)
-            {
-                await System.Threading.Tasks.Task.Delay(delay);
-                DoomGuyImage.Source = "dotnet_bot.png";
-
-                // Play Sound Effect
-                MyMedia.Play();
-                await System.Threading.Tasks.Task.Delay(delay);
-                await System.Threading.Tasks.Task.Delay(delay);
-                await System.Threading.Tasks.Task.Delay(delay);
-                await System.Threading.Tasks.Task.Delay(delay);
-
-            }
+            await CheckPainDrain(delay);
 
 
 
@@ -196,6 +181,21 @@ public partial class MainPage : ContentPage
         }
 
 
+    }
+
+    private async Task CheckPainDrain(int delay)
+    {
+        // Damage face & Sound effect, if battery goes down since last check
+        if (batteryLevel < batteryLevel_old)
+        {
+            //DoomGuyImage.Source = "dotnet_bot.png";
+            DoomGuyImage.Source = "p_doomgf.png";
+            await System.Threading.Tasks.Task.Delay(delay);
+
+            // Play Sound Effect
+            MyMedia.Play();
+            await System.Threading.Tasks.Task.Delay(delay * 3);
+        }
     }
 
     /// <summary>
