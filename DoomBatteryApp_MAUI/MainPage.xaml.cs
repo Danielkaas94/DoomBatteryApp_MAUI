@@ -9,12 +9,63 @@ public partial class MainPage : ContentPage
     int batteryLevel_old;
     int batteryLevel = int.Parse($"{Battery.ChargeLevel * 100:F0}");
 
+
+    public class BatteryMonitor
+    {
+
+        // Custom EventArgs class to hold the battery information.
+        public class BatteryInfoChangedEventArgs : EventArgs
+        {
+            public int BatteryLevel { get; set; }
+
+            public BatteryState BatteryState { get; set; }
+
+            // Add more properties related to battery information if needed.
+        }
+
+        public static event EventHandler<BatteryInfoChangedEventArgs> BatteryInfoChanged;
+
+
+        // Method to raise the event when the battery information changes.
+        public static void OnBatteryInfoChanged(int batteryLevel, BatteryState batteryState)
+        {
+            var args = new BatteryInfoChangedEventArgs { BatteryLevel = batteryLevel, BatteryState = batteryState };
+            BatteryInfoChanged?.Invoke(null, args);
+        }
+    }
+
     public MainPage()
     {
         InitializeComponent();
 
         UpdateLabelWithBatteryPercentage();
-        UpdateDoomFace(10);
+        UpdateDoomFace();
+        //BatteryMonitor.BatteryInfoChanged += BatteryMonitor_BatteryInfoChanged;
+        //BatteryMonitor.OnBatteryInfoChanged(batteryLevel, Battery.State);
+
+        Battery.BatteryInfoChanged += BatteryMonitor_BatteryInfoChanged;
+        BatteryMonitor.OnBatteryInfoChanged(batteryLevel, Battery.State);
+
+        //UpdateLabelWithBatteryPercentage();
+        //UpdateDoomFace(10);
+
+        //Battery.BatteryInfoChanged();
+
+    }
+
+    private void BatteryMonitor_BatteryInfoChanged(object sender, BatteryMonitor.BatteryInfoChangedEventArgs e)
+    {
+        //throw new NotImplementedException();
+        OnCounterClicked(sender, e);
+    }
+
+    private void BatteryMonitor_BatteryInfoChanged(object sender, BatteryInfoChangedEventArgs e)
+    {
+        Console.Beep(1600, 700);
+        OnCounterClicked(sender, e);
+        //UpdateLabelWithBatteryPercentage();
+        //UpdateDoomFace();
+        Console.Beep(700, 700);
     }
 
     /// <summary>
@@ -156,9 +207,6 @@ public partial class MainPage : ContentPage
     {
         count++;
 
-        //Console.Beep(1600, 700);
-        //Console.Beep(700, 700);
-
         if (count == 1)
             CounterBtn.Text = $"Clicked {count} time";
         else
@@ -169,7 +217,6 @@ public partial class MainPage : ContentPage
         UpdateLabelWithBatteryPercentage();
         UpdateDoomFace();
     }
-
 
 }
 
