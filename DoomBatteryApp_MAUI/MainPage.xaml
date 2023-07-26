@@ -1,14 +1,22 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="DoomBatteryApp_MAUI.MainPage">
+             x:Class="DoomBatteryApp_MAUI.MainPage"
+             xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit">
 
     <ScrollView>
-        <VerticalStackLayout
+        <VerticalStackLayouts
             Spacing="25"
             Padding="30,0"
             VerticalOptions="Center">
 
+                <!--Source="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4"-->
+                <!--Source="http://www.wolfensteingoodies.com/archives/olddoom/sounds/dsplpain.wav"-->
+            <toolkit:MediaElement
+                x:Name="MyMedia"
+                Source="http://www.wolfensteingoodies.com/archives/olddoom/sounds/dsplpain.wav"
+                ShouldShowPlaybackControls="True" IsVisible="False"/>
+            
             <Image
                 x:Name="DoomGuyImage"
                 Source=" "
@@ -39,7 +47,7 @@
                 Clicked="OnCounterClicked"
                 HorizontalOptions="Center" />
 
-        </VerticalStackLayout>
+        </VerticalStackLayouts>
     </ScrollView>
 
 </ContentPage>

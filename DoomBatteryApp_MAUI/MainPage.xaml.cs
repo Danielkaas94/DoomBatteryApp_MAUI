@@ -4,11 +4,14 @@ namespace DoomBatteryApp_MAUI;
 
 public partial class MainPage : ContentPage
 {
+    // http://www.wolfensteingoodies.com/archives/olddoom/music.htm
+
     int count = 0;
 
     int batteryLevel_old;
     int batteryLevel = int.Parse($"{Battery.ChargeLevel * 100:F0}");
 
+    readonly Random rand = new Random();
 
     public class BatteryMonitor
     {
@@ -38,8 +41,12 @@ public partial class MainPage : ContentPage
     {
         InitializeComponent();
 
+        //rand.Next(1, 3);
+
         UpdateLabelWithBatteryPercentage();
         UpdateDoomFace();
+
+        MyMedia.Pause();
         //BatteryMonitor.BatteryInfoChanged += BatteryMonitor_BatteryInfoChanged;
         //BatteryMonitor.OnBatteryInfoChanged(batteryLevel, Battery.State);
 
@@ -49,6 +56,7 @@ public partial class MainPage : ContentPage
         //UpdateLabelWithBatteryPercentage();
         //UpdateDoomFace(10);
 
+        //Device.
         //Battery.BatteryInfoChanged();
 
     }
@@ -61,11 +69,11 @@ public partial class MainPage : ContentPage
 
     private void BatteryMonitor_BatteryInfoChanged(object sender, BatteryInfoChangedEventArgs e)
     {
-        Console.Beep(1600, 700);
+        //Console.Beep(1600, 700);
         OnCounterClicked(sender, e);
         //UpdateLabelWithBatteryPercentage();
         //UpdateDoomFace();
-        Console.Beep(700, 700);
+        //Console.Beep(700, 700);
     }
 
     /// <summary>
@@ -77,6 +85,10 @@ public partial class MainPage : ContentPage
     {
 
         Debug.WriteLine($"{Battery.State}");
+
+
+
+
 
         // if (Battery.State == BatteryState.Full) { // Smile?}
         // When getting power - God Mode Yellow Eyes 🔋⚡
@@ -103,6 +115,7 @@ public partial class MainPage : ContentPage
                 DoomGuyImage.Source = "dotnet_bot.png";
 
                 // Play Sound Effect
+                MyMedia.Play();
                 await System.Threading.Tasks.Task.Delay(delay);
                 await System.Threading.Tasks.Task.Delay(delay);
                 await System.Threading.Tasks.Task.Delay(delay);
