@@ -41,8 +41,6 @@ public partial class MainPage : ContentPage
     {
         InitializeComponent();
 
-        //rand.Next(1, 3);
-
         UpdateLabelWithBatteryPercentage();
         UpdateDoomFace();
 
@@ -95,7 +93,6 @@ public partial class MainPage : ContentPage
         if (Battery.State == BatteryState.Charging || Battery.State == BatteryState.Full) {
 
             // Start with a big smile? 😁
-
             DoomGuyImage.Source = "gm3.png";
             //DoomGuyImage.Source = "gm1.png";
 
@@ -188,8 +185,24 @@ public partial class MainPage : ContentPage
         // Damage face & Sound effect, if battery goes down since last check
         if (batteryLevel < batteryLevel_old)
         {
+
+            switch (rand.Next(1, 3))
+            {
+                case 1:
+                    DoomGuyImage.Source = "p_doomgf.png"; // Damage Straight
+                    break;
+                case 2:
+                    DoomGuyImage.Source = "p_doomgfl.png"; // Damage Left
+                    break;
+                case 3:
+                    DoomGuyImage.Source = "p_doomgfr.png"; // Damage Right
+                    break;
+            }
+
+            // TODO: All Health Conditions
+
             //DoomGuyImage.Source = "dotnet_bot.png";
-            DoomGuyImage.Source = "p_doomgf.png";
+            //DoomGuyImage.Source = "p_doomgf.png";
             await System.Threading.Tasks.Task.Delay(delay);
 
             // Play Sound Effect
