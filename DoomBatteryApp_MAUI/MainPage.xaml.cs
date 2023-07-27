@@ -44,7 +44,7 @@ public partial class MainPage : ContentPage
         InitializeComponent();
 
         UpdateLabelWithBatteryPercentage();
-        UpdateDoomFace();
+        UpdateDoomFace(7);
 
         Battery.BatteryInfoChanged += BatteryMonitor_BatteryInfoChanged;
         BatteryMonitor.OnBatteryInfoChanged(batteryLevel, Battery.State);
@@ -154,22 +154,94 @@ public partial class MainPage : ContentPage
 
     private async Task CheckPainDrain(int delay)
     {
+
+        int direction = rand.Next(1, 3);
+
         // Damage face & Sound effect, if battery goes down since last check
         if (batteryLevel < batteryLevel_old)
         {
-
-            switch (rand.Next(1, 3))
+            if (batteryLevel <= 100 && batteryLevel >= 80) // DoomGoodFace
             {
-                case 1:
-                    DoomGuyImage.Source = "p_doomgf.png"; // Damage Straight
-                    break;
-                case 2:
-                    DoomGuyImage.Source = "p_doomgfl.png"; // Damage Left
-                    break;
-                case 3:
-                    DoomGuyImage.Source = "p_doomgfr.png"; // Damage Right
-                    break;
+                switch (direction)
+                {
+                    case 1:
+                        DoomGuyImage.Source = "p_doomgf.png"; // Damage Straight
+                        break;
+                    case 2:
+                        DoomGuyImage.Source = "p_doomgfl.png"; // Damage Left
+                        break;
+                    case 3:
+                        DoomGuyImage.Source = "p_doomgfr.png"; // Damage Right
+                        break;
+                }
             }
+            else if (batteryLevel <= 79 && batteryLevel >= 60) // Doom Mussed
+            {
+                switch (direction)
+                {
+                    case 1:
+                        DoomGuyImage.Source = "p_doomm.png"; // Damage Straight
+                        break;
+                    case 2:
+                        DoomGuyImage.Source = "p_doomml.png"; // Damage Left
+                        break;
+                    case 3:
+                        DoomGuyImage.Source = "p_doommr.png"; // Damage Right
+                        break;
+                }
+            }
+            else if (batteryLevel <= 59 && batteryLevel >= 40) // Doom Swollen
+            {
+                switch (direction)
+                {
+                    case 1:
+                        DoomGuyImage.Source = "p_dooms.png"; // Damage Straight
+                        break;
+                    case 2:
+                        DoomGuyImage.Source = "p_doomsl.png"; // Damage Left
+                        break;
+                    case 3:
+                        DoomGuyImage.Source = "p_doomsr.png"; // Damage Right
+                        break;
+                }
+            }
+            else if (batteryLevel <= 39 && batteryLevel >= 20) // Doom Dirty
+            {
+                switch (direction)
+                {
+                    case 1:
+                        DoomGuyImage.Source = "p_doomd.png"; // Damage Straight
+                        break;
+                    case 2:
+                        DoomGuyImage.Source = "p_doomdl.png"; // Damage Left
+                        break;
+                    case 3:
+                        DoomGuyImage.Source = "p_doomdr.png"; // Damage Right
+                        break;
+                }
+            }
+            else if (batteryLevel <= 19 && batteryLevel >= 1) // Doom Bloody
+            {
+                switch (direction)
+                {
+                    case 1:
+                        DoomGuyImage.Source = "p_doomb.png"; // Damage Straight
+                        break;
+                    case 2:
+                        DoomGuyImage.Source = "p_doombl.png"; // Damage Left
+                        break;
+                    case 3:
+                        DoomGuyImage.Source = "p_doombr.png"; // Damage Right
+                        break;
+                }
+            }
+
+
+
+
+
+
+
             // TODO: All Health Conditions
             await System.Threading.Tasks.Task.Delay(delay);
             // Play Sound Effect
@@ -212,6 +284,10 @@ public partial class MainPage : ContentPage
 
     }
 
+    /// <summary>
+    /// <para>Play Damage Sound, when battery is draining 🔋⬇️</para>
+    /// Creates a temp audio file with UnmanagedMemoryStream Resource 📜🔊
+    /// </summary>
     private void PlayPainSoundFromResource()
     {
         UnmanagedMemoryStream unmanagedMemoryStream = DoomBatteryApp_MAUI.Properties.Resource1.dsplpain;
