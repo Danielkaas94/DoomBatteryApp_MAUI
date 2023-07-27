@@ -1,10 +1,17 @@
-# DoomBatteryApp_MAUI 🔋⚡
+# Doom Battery App .NET MAUI 🔋⚡
+
+<div align="center">
+
+<img width="340" src="https://res.cloudinary.com/practicaldev/image/fetch/s--S9prgcX---/c_imagga_scale,f_auto,fl_progressive,h_420,q_auto,w_1000/https://dev-to-uploads.s3.amazonaws.com/uploads/articles/eunl080q8n8lz8ymjy2h.png">
 
 .NET MAUI App 🔌🔋
+
+</div>
 
 Battery Percentage = Health %
 
 A rebuild of [Danielkaas94/DoomFaceBattery](https://github.com/Danielkaas94/DoomFaceBattery), but made for MAUI
+
 
 <div align="center">
 
