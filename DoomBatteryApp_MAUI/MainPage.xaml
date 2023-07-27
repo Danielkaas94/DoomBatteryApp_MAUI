@@ -2,6 +2,7 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="DoomBatteryApp_MAUI.MainPage"
+             xmlns:embedded="clr-namespace:Microsoft.Maui.Controls;assembly=Microsoft.Maui.Controls"
              xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit">
 
     <ScrollView>
@@ -12,9 +13,11 @@
 
                 <!--Source="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4"-->
                 <!--Source="http://www.wolfensteingoodies.com/archives/olddoom/sounds/dsplpain.wav"-->
+                <!--Source="{DoomBatteryApp_MAUI.Resources\Images}"-->
+
             <toolkit:MediaElement
                 x:Name="MyMedia"
-                Source="http://www.wolfensteingoodies.com/archives/olddoom/sounds/dsplpain.wav"
+                Source=" "
                 ShouldShowPlaybackControls="False" IsVisible="False"/>
             
             <Image
@@ -34,7 +37,7 @@
                 HorizontalOptions="Center" />
 
             <Label
-                Text="Welcome to .NET Multi-platform App UI"
+                Text="v1.06 Welcome to .NET Multi-platform App UI"
                 SemanticProperties.HeadingLevel="Level2"
                 SemanticProperties.Description="Welcome to dot net Multi platform App U I"
                 FontSize="18"

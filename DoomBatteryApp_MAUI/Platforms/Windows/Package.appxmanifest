@@ -41,6 +41,8 @@
 
   <Capabilities>
     <rescap:Capability Name="runFullTrust" />
+    <uap:Capability Name="removableStorage"/>
+    <uap:Capability Name="musicLibrary"/>
   </Capabilities>
 
 </Package>

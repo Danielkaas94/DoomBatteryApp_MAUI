@@ -1,4 +1,8 @@
-﻿using System.Diagnostics;
+﻿using CommunityToolkit.Maui.Views;
+using DoomBatteryApp_MAUI.Properties;
+using System.Diagnostics;
+using System.Media;
+using System.Text;
 
 namespace DoomBatteryApp_MAUI;
 
@@ -12,6 +16,9 @@ public partial class MainPage : ContentPage
     int batteryLevel = int.Parse($"{Battery.ChargeLevel * 100:F0}");
 
     readonly Random rand = new Random();
+
+    private SoundPlayer player;
+
 
     public class BatteryMonitor
     {
@@ -41,10 +48,11 @@ public partial class MainPage : ContentPage
     {
         InitializeComponent();
 
+        //MyMedia.Play();
         UpdateLabelWithBatteryPercentage();
         UpdateDoomFace();
 
-        MyMedia.Pause();
+        //MyMedia.Pause();
         //BatteryMonitor.BatteryInfoChanged += BatteryMonitor_BatteryInfoChanged;
         //BatteryMonitor.OnBatteryInfoChanged(batteryLevel, Battery.State);
 
@@ -242,7 +250,177 @@ public partial class MainPage : ContentPage
 
         UpdateLabelWithBatteryPercentage();
         UpdateDoomFace();
+
+        System.Text.StringBuilder stringBuilder = new System.Text.StringBuilder();
+
+        var test2 = Environment.CurrentDirectory;
+        var test3 = Environment.ProcessPath;
+        //var test = "C:\\Users\\danie\\source\\repos\\DoomBatteryApp_MAUI";
+        //var test = "C:\\Users\\danie\\source\\repos\\DoomBatteryApp_MAUI";
+        //var test = "\\system\\";
+        //var test = "/system/bin/app_process64";
+        var test = "/system/bin/";
+        var testA = "C:\\system\\bin";
+
+        //int index = test.IndexOf("Doom");
+
+        //string test2 = test.Substring(0, index);
+
+        //MyMedia.Source = "C:\\Users\\danie\\source\\repos\\DoomBatteryApp_MAUI\\dsplpain.wav";
+
+        //var test = Environment.GetFolderPath;
+
+        string appDataDirectory1 = FileSystem.AppDataDirectory;
+        string appDataDirectory2 = FileSystem.CacheDirectory;
+        //string appDataDirectory = FileSystem.CacheDirectory;
+        string searchFileName = "dsplpain.wav"; // Replace with the name of the file you want to find
+
+        //string[] foundFilesA = Directory.GetFiles(testA, searchFileName, SearchOption.AllDirectories);
+
+        string[] foundFiles;
+        // foundFiles = Directory.GetFiles(test, searchFileName, SearchOption.AllDirectories);
+        string[] foundFiles1 = Directory.GetFiles(appDataDirectory1, searchFileName, SearchOption.AllDirectories);
+        string[] foundFiles2 = Directory.GetFiles(appDataDirectory2, searchFileName, SearchOption.AllDirectories);
+        string filePath = "";
+        foreach (string file in foundFiles1)
+        {
+            filePath = file;
+
+            if (File.Exists(file))
+            {
+                MyMedia.Source = file;
+                MyMedia.Play();
+            }
+        }
+
+        /*
+        string searchDirectory = Environment.ProcessPath; // Replace with the directory you want to search in
+        searchDirectory = Environment.CurrentDirectory; // Replace with the directory you want to search in
+        string searchFileName = "dsplpain.txt"; // Replace with the name of the file you want to find
+
+        // Search for all files that match the searchFileName in the searchDirectory and its subdirectories
+        string[] foundFiles = Directory.GetFiles(searchDirectory, searchFileName, SearchOption.AllDirectories);
+
+        foreach ( string file in foundFiles ) {
+        
+            if (File.Exists(file))
+            {
+                MyMedia.Source = file;
+                MyMedia.Play();
+
+
+            }
+        }
+         */
+
+        //CounterBtn.Text = $"Clicked {test} times";
+        CounterBtn.Text = $"Clicked {filePath} times";
+        //MyMedia.Source = filePath;
+        //MyMedia.Play();
+        //MyMedia.Source = "C:\\Users\\danie\\source\\repos\\DoomBatteryApp_MAUI\\dsplpain.wav";
+        //MyMedia.Play();
+
+        /*
+            System.Reflection.Assembly assembly = System.Reflection.Assembly.GetExecutingAssembly();
+            System.IO.Stream stream = assembly.GetManifestResourceStream("<AssemblyName>.dsplpain.wav");
+            SoundPlayer player = new SoundPlayer(stream);
+            player.Play();
+        */
+
+        // C:\Users\danie\source\repos\DoomBatteryApp_MAUI\DoomBatteryApp_MAUI\Resources\Images\dsplpain.wav
+        //MyMedia.Source = "http://www.wolfensteingoodies.com/archives/olddoom/sounds/dsplpain.wav";
+        //MyMedia.Source = DoomBatteryApp_MAUI.Properties.Resource1.dsplpain;
+
+        UnmanagedMemoryStream unmanagedMemoryStream = Properties.Resource1.dsplpain;
+
+        //TestTest();
+
+        /*
+         
+            if (!RuntimeInformation.IsOSPlatform(OSPlatform.Windows)) return;
+            System.Media.SoundPlayer player = new System.Media.SoundPlayer();
+            player.Stream = Properties.Resources.imsend;
+            player.Play();
+
+         */
+
+
+
+
+
+
+        //SoundPlayer soundPlayer = new SoundPlayer(unmanagedMemoryStream);
+        //soundPlayer.Play();
+
+
+        // Create a temporary file path to save the audio data
+        string tempFilePath = Path.Combine(Path.GetTempPath(), "tempaudio.wav");
+
+        // Write the UnmanagedMemoryStream to the temporary file
+        using (var fileStream = File.Create(tempFilePath))
+        {
+            unmanagedMemoryStream.CopyTo(fileStream);
+        }
+
+
+        MyMedia.Source = MediaSource.FromFile(tempFilePath);
+        //MyMedia.Source = Properties.Resource1.dsplpain;
+        MyMedia.Play();
+
+
+        //MyMedia.Source = DoomBatteryApp_MAUI.Properties.Resource1.dsplpain;
+        //MyMedia.Play();
+
+
+
+        //MyMedia.Source = "dsplpain.wav";       
+        //MyMedia.Source = test. + "dsplpain.wav";
+        //MyMedia.Source = "\\DoomBatteryApp_MAUI\\Resources\\dsplpain.wav";
+        //MyMedia.Source = new Uri(@"");
+
+
+        //MyMedia.Source = "C:\\Users\\danie\\source\\repos\\DoomBatteryApp_MAUI\\DoomBatteryApp_MAUI\\Resources\\Images\\dsplpain.wav";
+        //MyMedia.Source = "C:\\Users\\danie\\source\\repos\\DoomBatteryApp_MAUI\\DoomBatteryApp_MAUI\\dsplpain.wav";
+
+
     }
 
+    private void TestTest()
+    {
+        /*
+
+                // Create a MediaElement instance
+                var mediaElement = new MediaElement();
+
+                // Assuming Resource1.dsplpain is the UnmanagedMemoryStream containing the audio data.
+                UnmanagedMemoryStream unmanagedMemoryStream = Resource1.dsplpain;
+
+                // Create a MemoryStream and copy the data from UnmanagedMemoryStream to MemoryStream.
+                MemoryStream memoryStream = new MemoryStream();
+                unmanagedMemoryStream.CopyTo(memoryStream);
+
+                // Set the MediaElement.Source to the MemoryStream
+                //mediaElement.Source = MediaSource.FromStream(() => new MemoryStream(memoryStream.ToArray()));
+                mediaElement.Source = MediaSource.FromResource("dsplpain");
+
+                // Add the MediaElement to the Content of the MainPage
+                Content = new StackLayout
+                {
+                    Children = { mediaElement }
+                };
+
+                // Start playing the audio (optional)
+                mediaElement.Play();
+        */
+
+        UnmanagedMemoryStream unmanagedMemoryStream2 = Properties.Resource1.dsplpain;
+
+        MemoryStream memoryStream = new MemoryStream();
+
+        MyMedia.Source = MediaSource.FromResource(Properties.Resource1.dsplpain.ToString());
+        MyMedia.Play();
+        //MyMedia.Source = MediaSource.FromResource(unmanagedMemoryStream2);
+
+    }
 }
 
