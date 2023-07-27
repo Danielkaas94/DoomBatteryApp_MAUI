@@ -11,10 +11,6 @@
             Padding="30,0"
             VerticalOptions="Center">
 
-                <!--Source="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4"-->
-                <!--Source="http://www.wolfensteingoodies.com/archives/olddoom/sounds/dsplpain.wav"-->
-                <!--Source="{DoomBatteryApp_MAUI.Resources\Images}"-->
-
             <toolkit:MediaElement
                 x:Name="MyMedia"
                 Source=" "
