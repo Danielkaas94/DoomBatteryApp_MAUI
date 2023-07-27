@@ -154,7 +154,6 @@ public partial class MainPage : ContentPage
 
     private async Task CheckPainDrain(int delay)
     {
-
         int direction = rand.Next(1, 3);
 
         // Damage face & Sound effect, if battery goes down since last check
