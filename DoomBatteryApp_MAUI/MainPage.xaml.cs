@@ -73,7 +73,7 @@ public partial class MainPage : ContentPage
         // When getting power - God Mode Yellow Eyes 🔋⚡
         if (Battery.State == BatteryState.Charging || Battery.State == BatteryState.Full)
         {
-            SmileGetPower();
+            SmileGetPower(delay);
 
             DoomGuyImage.Source = "gm3.png";
             //DoomGuyImage.Source = "gm1.png";
@@ -163,7 +163,7 @@ public partial class MainPage : ContentPage
     /// Behavior when going from BatteryState.Discharging to BatteryState.Charging
     /// <para>Make a big smile, play the shotgun sound 😁🔫🔊</para>
     /// </summary>
-    private void SmileGetPower()
+    private async Task SmileGetPower(int delay)
     {
         // Initial behavior when going from BatteryState.Discharging to BatteryState.Charging
         if (batteryState_old == BatteryState.Discharging && Battery.State == BatteryState.Charging)
@@ -171,8 +171,31 @@ public partial class MainPage : ContentPage
             //throw new NotImplementedException();
 
             // Start with a big smile 😁
+            if (batteryLevel <= 100 && batteryLevel >= 80) // DoomGoodFace
+            {
+                DoomGuyImage.Source = "s_doomgf.png"; // Smile Doom Good Face
+            }
+            else if (batteryLevel <= 79 && batteryLevel >= 60) // Doom Mussed
+            {
+                DoomGuyImage.Source = "s_doomm.png"; // Smile Doom Good Face
+            }
+            else if (batteryLevel <= 59 && batteryLevel >= 40) // Doom Swollen
+            {
+                DoomGuyImage.Source = "s_dooms.png"; // Smile Doom Good Face
+            }
+            else if (batteryLevel <= 39 && batteryLevel >= 20) // Doom Dirty
+            {
+                DoomGuyImage.Source = "s_doomd.png"; // Smile Doom Good Face
+            }
+            else if (batteryLevel <= 19 && batteryLevel >= 1) // Doom Bloody
+            {
+                DoomGuyImage.Source = "s_doomb.png"; // Smile Doom Good Face
+            }
 
+            await System.Threading.Tasks.Task.Delay(delay);
             // Play Shotgun Sound 🔫🔊
+            PlayPainSoundFromResource();
+            await System.Threading.Tasks.Task.Delay(delay * 2);
         }
     }
 
