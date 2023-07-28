@@ -8,10 +8,22 @@
 
 </div>
 
+A rebuild of [Danielkaas94/DoomFaceBattery](https://github.com/Danielkaas94/DoomFaceBattery), but made for MAUI    
 Battery Percentage = Health %
 
-A rebuild of [Danielkaas94/DoomFaceBattery](https://github.com/Danielkaas94/DoomFaceBattery), but made for MAUI
+## New Features compared to the old version:
 
+* Battery Event handler 👋🤌
+* Yellow Eyes when battery is charging 🤩🔋🔌⬆️
+* Shows and cry in pain when percentage goes down 🔋⬇️
+* Smiles when inserting charging cable 😁🔌
+* Sound Effects! 💥🔊
+    * Power Up 🔵 When hitting 💯%
+    * Shotgun - Inserting charging cable 🔫🔌
+    * Pain - When battery is draining 🤕🔋⬇️
+    * Item Collect - When battery goes up 🔑🍼🍶🍾🔋⬆️
+
+<hr>
 
 <div align="center">
 
@@ -29,11 +41,17 @@ A rebuild of [Danielkaas94/DoomFaceBattery](https://github.com/Danielkaas94/Doom
 
     First Screen shot!
 
-<p align="center">
-    <img alt="Doom Guy - First Android Screenshot!" width="250" src="https://github.com/Danielkaas94/DoomBatteryApp_MAUI/blob/master/DoomBatteryApp_MAUI/Resources/DoomAndroidMAUI.jpg?raw=true">
-</p>
+<div align="center">
 
-    First Android Screen shot!
+<img alt="Doom Guy - First Android Screenshot!" width="250" src="https://github.com/Danielkaas94/DoomBatteryApp_MAUI/blob/master/DoomBatteryApp_MAUI/Resources/DoomAndroidMAUI.jpg?raw=true">
+    
+<img alt="Doom Guy - v1.16 Android Screenshot!" width="250" src="https://github.com/Danielkaas94/DoomBatteryApp_MAUI/blob/master/DoomBatteryApp_MAUI/Resources/App16.jpg?raw=true">
+
+</div>
+
+    First Android Screen shot and the latest!
+
+
 
 <div align="center">
     
@@ -45,6 +63,7 @@ A rebuild of [Danielkaas94/DoomFaceBattery](https://github.com/Danielkaas94/Doom
 
 </div>
 
+<hr>
 
 [Join CodeWars with me! 👨‍💻](http://codewars.com/r/hGyTsQ)
 <p>
