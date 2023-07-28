@@ -285,11 +285,11 @@ public partial class MainPage : ContentPage
 
     /// <summary>
     /// <para>Play Damage Sound, when battery is draining 🔋⬇️</para>
-    /// Creates a temp audio file with UnmanagedMemoryStream Resource 📜🔊
+    /// Creates a temp audio file with UnmanagedMemoryStream Resource dsplpain 📜🔊
     /// </summary>
     private void PlayPainSoundFromResource()
     {
-        UnmanagedMemoryStream unmanagedMemoryStream = DoomBatteryApp_MAUI.Properties.Resource1.dsplpain;
+        UnmanagedMemoryStream unmanagedMemoryStream = SoundResource.dsplpain;
 
         string tempFilePath = Path.Combine(Path.GetTempPath(), "tempaudio.wav");
 

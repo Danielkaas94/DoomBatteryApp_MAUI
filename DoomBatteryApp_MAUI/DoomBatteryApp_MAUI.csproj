@@ -49,10 +49,6 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <MauiImage Remove="Resources\Images\dsplpain.wav" />
-	</ItemGroup>
-
-	<ItemGroup>
 		<PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="7.0.0" />
 		<PackageReference Include="System.Windows.Extensions" Version="7.0.0" />
 	</ItemGroup>
@@ -76,30 +72,19 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <Resource Include="Resources\Images\dsplpain.wav">
-	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-	  </Resource>
-	</ItemGroup>
-
-	<ItemGroup>
-	  <Compile Update="Properties\Resource1.Designer.cs">
+	  <Compile Update="Properties\SoundResource.Designer.cs">
 	    <DesignTime>True</DesignTime>
 	    <AutoGen>True</AutoGen>
-	    <DependentUpon>Resource1.resx</DependentUpon>
+	    <DependentUpon>SoundResource.resx</DependentUpon>
 	  </Compile>
 	</ItemGroup>
 
 	<ItemGroup>
-	  <EmbeddedResource Update="Properties\Resource1.resx">
+	  <EmbeddedResource Update="Properties\SoundResource.resx">
 	    <Generator>ResXFileCodeGenerator</Generator>
-	    <LastGenOutput>Resource1.Designer.cs</LastGenOutput>
-	  </EmbeddedResource>
-	</ItemGroup>
-
-	<ItemGroup>
-	  <None Update="dsplpain.wav">
+	    <LastGenOutput>SoundResource.Designer.cs</LastGenOutput>
 	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-	  </None>
+	  </EmbeddedResource>
 	</ItemGroup>
 
 </Project>
