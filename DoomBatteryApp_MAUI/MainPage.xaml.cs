@@ -160,7 +160,7 @@ public partial class MainPage : ContentPage
     }
 
     /// <summary>
-    /// Smile Behavior when going from BatteryState.Discharging => BatteryState.Charging
+    /// Smile behavior when going from BatteryState.Discharging => BatteryState.Charging
     /// <para>Make a big smile, play the shotgun sound 😁🔫🔊</para>
     /// </summary>
     private async Task SmileGetPower(int delay)
