@@ -47,7 +47,7 @@ public partial class MainPage : ContentPage
         InitializeComponent();
 
         UpdateLabelWithBatteryPercentage();
-        UpdateDoomFace(7);
+        UpdateDoomFace(1);
 
         Battery.BatteryInfoChanged += BatteryMonitor_BatteryInfoChanged;
         BatteryMonitor.OnBatteryInfoChanged(batteryLevel, Battery.State);
@@ -73,15 +73,13 @@ public partial class MainPage : ContentPage
         // When getting power - God Mode Yellow Eyes 🔋⚡
         if (Battery.State == BatteryState.Charging || Battery.State == BatteryState.Full)
         {
-            SmileGetPower(delay);
+            await SmileGetPower(delay);
+            await System.Threading.Tasks.Task.Delay(delay);  
 
             DoomGuyImage.Source = "gm3.png";
             //DoomGuyImage.Source = "gm1.png";
 
             await System.Threading.Tasks.Task.Delay(delay);
-            await System.Threading.Tasks.Task.Delay(delay);
-            await System.Threading.Tasks.Task.Delay(delay);
-
         }
         else // Mortal Man -- Gods Do Not Bleed 🤕🩸
         {
@@ -195,10 +193,9 @@ public partial class MainPage : ContentPage
 
             #endregion
 
-            await System.Threading.Tasks.Task.Delay(delay);
             // Play Shotgun Sound 🔫🔊
             PlayPainSoundFromResource();
-            await System.Threading.Tasks.Task.Delay(delay * 2);
+            await System.Threading.Tasks.Task.Delay(delay);
         }
     }
 
