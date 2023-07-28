@@ -58,7 +58,8 @@ public partial class MainPage : ContentPage
         batteryState_old = batteryState;
         batteryState = Battery.State;
 
-        OnCounterClicked(sender, e);
+        UpdateLabelWithBatteryPercentage();
+        UpdateDoomFace(1);
     }
 
     /// <summary>
@@ -73,8 +74,9 @@ public partial class MainPage : ContentPage
         // When getting power - God Mode Yellow Eyes 🔋⚡
         if (Battery.State == BatteryState.Charging || Battery.State == BatteryState.Full)
         {
-            await CheckHealthUp(delay);
             await SmileGetPower(delay);
+            await System.Threading.Tasks.Task.Delay(delay);
+            await CheckHealthUp(delay);
             await System.Threading.Tasks.Task.Delay(delay);
 
             if (batteryLevel_old == 99 && batteryLevel == 100)
@@ -353,7 +355,7 @@ public partial class MainPage : ContentPage
         SemanticScreenReader.Announce(CounterBtn.Text);
 
         UpdateLabelWithBatteryPercentage();
-        UpdateDoomFace();
+        UpdateDoomFace(7);
 
     }
 
