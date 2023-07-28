@@ -10,6 +10,9 @@ public partial class MainPage : ContentPage
 
     int count = 0;
 
+    BatteryState batteryState_old;
+    BatteryState batteryState = Battery.State;
+
     int batteryLevel_old;
     int batteryLevel = int.Parse($"{Battery.ChargeLevel * 100:F0}");
 
@@ -52,6 +55,9 @@ public partial class MainPage : ContentPage
 
     private void BatteryMonitor_BatteryInfoChanged(object sender, BatteryInfoChangedEventArgs e)
     {
+        batteryState_old = batteryState;
+        batteryState = Battery.State;
+
         OnCounterClicked(sender, e);
     }
 
@@ -65,9 +71,10 @@ public partial class MainPage : ContentPage
 
         // if (Battery.State == BatteryState.Full) { // Smile?}
         // When getting power - God Mode Yellow Eyes 🔋⚡
-        if (Battery.State == BatteryState.Charging || Battery.State == BatteryState.Full) {
+        if (Battery.State == BatteryState.Charging || Battery.State == BatteryState.Full)
+        {
+            SmileGetPower();
 
-            // Start with a big smile? 😁
             DoomGuyImage.Source = "gm3.png";
             //DoomGuyImage.Source = "gm1.png";
 
@@ -150,6 +157,23 @@ public partial class MainPage : ContentPage
 
         }
 
+    }
+
+    /// <summary>
+    /// Behavior when going from BatteryState.Discharging to BatteryState.Charging
+    /// <para>Make a big smile, play the shotgun sound 😁🔫🔊</para>
+    /// </summary>
+    private void SmileGetPower()
+    {
+        // Initial behavior when going from BatteryState.Discharging to BatteryState.Charging
+        if (batteryState_old == BatteryState.Discharging && Battery.State == BatteryState.Charging)
+        {
+            //throw new NotImplementedException();
+
+            // Start with a big smile 😁
+
+            // Play Shotgun Sound 🔫🔊
+        }
     }
 
     private async Task CheckPainDrain(int delay)
@@ -254,6 +278,7 @@ public partial class MainPage : ContentPage
     /// </summary>
     private void UpdateLabelWithBatteryPercentage()
     {
+
         batteryLevel_old = batteryLevel;
         batteryLevel = int.Parse($"{Battery.ChargeLevel * 100:F0}");
 
