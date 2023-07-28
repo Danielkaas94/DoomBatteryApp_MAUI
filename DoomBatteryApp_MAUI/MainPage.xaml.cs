@@ -207,12 +207,13 @@ public partial class MainPage : ContentPage
 
     /// <summary>
     /// Logic when to play the Item Pick up sound
+    /// <para>Sound Effect, if battery goes up since last check, excemption is 100%</para>
+    /// <para>If True PlayItemSoundFromResource()</para>
     /// </summary>
     /// <param name="delay">For System.Threading.Tasks.Task.Delay(delay)</param>
     /// <returns></returns>
     private async Task CheckHealthUp(int delay)
     {
-        // Damage face & Sound effect, if battery goes down since last check
         if (batteryLevel > batteryLevel_old && batteryLevel != 100)
         {
             // Play Sound Effect
@@ -223,6 +224,7 @@ public partial class MainPage : ContentPage
 
     /// <summary>
     /// Check if Battery/Health goes down 🔋⬇️
+    /// <para>Pain Sound Effect, if battery goes down since last check</para>
     /// <para>If True PlayPainSoundFromResource()</para>
     /// </summary>
     /// <param name="delay">For System.Threading.Tasks.Task.Delay(delay)</param>
