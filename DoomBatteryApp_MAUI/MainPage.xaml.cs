@@ -73,6 +73,7 @@ public partial class MainPage : ContentPage
         // When getting power - God Mode Yellow Eyes 🔋⚡
         if (Battery.State == BatteryState.Charging || Battery.State == BatteryState.Full)
         {
+            await CheckHealthUp(delay);
             await SmileGetPower(delay);
             await System.Threading.Tasks.Task.Delay(delay);
 
@@ -82,7 +83,6 @@ public partial class MainPage : ContentPage
             }
 
             DoomGuyImage.Source = "gm3.png";
-            //DoomGuyImage.Source = "gm1.png";
 
             await System.Threading.Tasks.Task.Delay(delay);
         }
@@ -203,8 +203,28 @@ public partial class MainPage : ContentPage
         }
     }
 
+    /// <summary>
+    /// Logic when to play the Item Pick up sound
+    /// </summary>
+    /// <param name="delay">For System.Threading.Tasks.Task.Delay(delay)</param>
+    /// <returns></returns>
+    private async Task CheckHealthUp(int delay)
+    {
+        // Damage face & Sound effect, if battery goes down since last check
+        if (batteryLevel > batteryLevel_old && batteryLevel != 100)
+        {
+            // Play Sound Effect
+            PlayItemSoundFromResource();
+            await System.Threading.Tasks.Task.Delay(delay);
+        }
+    }
 
-
+    /// <summary>
+    /// Check if Battery/Health goes down 🔋⬇️
+    /// <para>If True PlayPainSoundFromResource()</para>
+    /// </summary>
+    /// <param name="delay">For System.Threading.Tasks.Task.Delay(delay)</param>
+    /// <returns></returns>
     private async Task CheckPainDrain(int delay)
     {
         int direction = rand.Next(1, 3);
