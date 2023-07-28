@@ -193,11 +193,12 @@ public partial class MainPage : ContentPage
 
             #endregion
 
-            // Play Shotgun Sound 🔫🔊
-            PlayPainSoundFromResource();
+            PlayWeaponPickupSoundFromResource();
             await System.Threading.Tasks.Task.Delay(delay);
         }
     }
+
+
 
     private async Task CheckPainDrain(int delay)
     {
@@ -340,6 +341,26 @@ public partial class MainPage : ContentPage
         UnmanagedMemoryStream unmanagedMemoryStream = SoundResource.dsplpain;
 
         string tempFilePath = Path.Combine(Path.GetTempPath(), "tempaudio.wav");
+
+        // Write the UnmanagedMemoryStream to the temporary file
+        using (var fileStream = File.Create(tempFilePath))
+        {
+            unmanagedMemoryStream.CopyTo(fileStream);
+        }
+
+        MyMedia.Source = MediaSource.FromFile(tempFilePath);
+        MyMedia.Play();
+    }
+
+    /// <summary>
+    /// <para>Play Shotgun Sound, when charging 🔫🔊🔋🔌</para>
+    /// Creates a temp audio file with UnmanagedMemoryStream Resource dsplpain 📜🔊
+    /// </summary>
+    private void PlayWeaponPickupSoundFromResource()
+    {
+        UnmanagedMemoryStream unmanagedMemoryStream = SoundResource.dswpnup;
+
+        string tempFilePath = Path.Combine(Path.GetTempPath(), "tempaudio2.wav");
 
         // Write the UnmanagedMemoryStream to the temporary file
         using (var fileStream = File.Create(tempFilePath))

@@ -118,8 +118,17 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="dsgetpow" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Sound\dsgetpow.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="dsitemup" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Sound\dsitemup.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
   <data name="dsplpain" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Sound\dsplpain.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="dswpnup" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Sound\dswpnup.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="String1" xml:space="preserve">
     <value>Test</value>
