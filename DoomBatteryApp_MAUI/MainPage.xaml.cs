@@ -160,7 +160,7 @@ public partial class MainPage : ContentPage
     }
 
     /// <summary>
-    /// Behavior when going from BatteryState.Discharging to BatteryState.Charging
+    /// Smile Behavior when going from BatteryState.Discharging => BatteryState.Charging
     /// <para>Make a big smile, play the shotgun sound 😁🔫🔊</para>
     /// </summary>
     private async Task SmileGetPower(int delay)
@@ -168,7 +168,8 @@ public partial class MainPage : ContentPage
         // Initial behavior when going from BatteryState.Discharging to BatteryState.Charging
         if (batteryState_old == BatteryState.Discharging && Battery.State == BatteryState.Charging)
         {
-            //throw new NotImplementedException();
+
+            #region Big Smile 😁
 
             // Start with a big smile 😁
             if (batteryLevel <= 100 && batteryLevel >= 80) // DoomGoodFace
@@ -191,6 +192,8 @@ public partial class MainPage : ContentPage
             {
                 DoomGuyImage.Source = "s_doomb.png"; // Smile Doom Good Face
             }
+
+            #endregion
 
             await System.Threading.Tasks.Task.Delay(delay);
             // Play Shotgun Sound 🔫🔊
