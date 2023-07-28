@@ -392,6 +392,26 @@ public partial class MainPage : ContentPage
         MyMedia.Play();
     }
 
+    /// <summary>
+    /// <para>Play Power Up Sound, when battery hit 100% 🔵🔋⬆️</para>
+    /// Creates a temp audio file with UnmanagedMemoryStream Resource dsgetpow 📜🔊
+    /// </summary>
+    private void PlayPowerUpSoundFromResource()
+    {
+        UnmanagedMemoryStream unmanagedMemoryStream = SoundResource.dsgetpow;
+
+        string tempFilePath = Path.Combine(Path.GetTempPath(), "tempaudio4.wav");
+
+        // Write the UnmanagedMemoryStream to the temporary file
+        using (var fileStream = File.Create(tempFilePath))
+        {
+            unmanagedMemoryStream.CopyTo(fileStream);
+        }
+
+        MyMedia.Source = MediaSource.FromFile(tempFilePath);
+        MyMedia.Play();
+    }
+
 
 }
 
