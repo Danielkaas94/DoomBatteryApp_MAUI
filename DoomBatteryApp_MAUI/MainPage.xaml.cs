@@ -340,7 +340,7 @@ public partial class MainPage : ContentPage
     {
         UnmanagedMemoryStream unmanagedMemoryStream = SoundResource.dsplpain;
 
-        string tempFilePath = Path.Combine(Path.GetTempPath(), "tempaudio.wav");
+        string tempFilePath = Path.Combine(Path.GetTempPath(), "tempaudio1.wav");
 
         // Write the UnmanagedMemoryStream to the temporary file
         using (var fileStream = File.Create(tempFilePath))
@@ -354,7 +354,7 @@ public partial class MainPage : ContentPage
 
     /// <summary>
     /// <para>Play Shotgun Sound, when charging 🔫🔊🔋🔌</para>
-    /// Creates a temp audio file with UnmanagedMemoryStream Resource dsplpain 📜🔊
+    /// Creates a temp audio file with UnmanagedMemoryStream Resource dswpnup 📜🔊
     /// </summary>
     private void PlayWeaponPickupSoundFromResource()
     {
@@ -371,6 +371,27 @@ public partial class MainPage : ContentPage
         MyMedia.Source = MediaSource.FromFile(tempFilePath);
         MyMedia.Play();
     }
+
+    /// <summary>
+    /// <para>Play Item Sound, when battery is charging 🔋⬆️</para>
+    /// Creates a temp audio file with UnmanagedMemoryStream Resource dsitemup 📜🔊
+    /// </summary>
+    private void PlayItemSoundFromResource()
+    {
+        UnmanagedMemoryStream unmanagedMemoryStream = SoundResource.dsitemup;
+
+        string tempFilePath = Path.Combine(Path.GetTempPath(), "tempaudio3.wav");
+
+        // Write the UnmanagedMemoryStream to the temporary file
+        using (var fileStream = File.Create(tempFilePath))
+        {
+            unmanagedMemoryStream.CopyTo(fileStream);
+        }
+
+        MyMedia.Source = MediaSource.FromFile(tempFilePath);
+        MyMedia.Play();
+    }
+
 
 }
 
