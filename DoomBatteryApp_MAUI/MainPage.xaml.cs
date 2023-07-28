@@ -74,7 +74,12 @@ public partial class MainPage : ContentPage
         if (Battery.State == BatteryState.Charging || Battery.State == BatteryState.Full)
         {
             await SmileGetPower(delay);
-            await System.Threading.Tasks.Task.Delay(delay);  
+            await System.Threading.Tasks.Task.Delay(delay);
+
+            if (batteryLevel_old == 99 && batteryLevel == 100)
+            {
+                PlayPowerUpSoundFromResource();
+            }
 
             DoomGuyImage.Source = "gm3.png";
             //DoomGuyImage.Source = "gm1.png";
