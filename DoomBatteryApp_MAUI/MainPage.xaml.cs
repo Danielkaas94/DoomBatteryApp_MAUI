@@ -1,5 +1,6 @@
 ﻿using CommunityToolkit.Maui.Views;
 using DoomBatteryApp_MAUI.Properties;
+using Plugin.Maui.Audio;
 using System.Media;
 
 namespace DoomBatteryApp_MAUI;
@@ -17,6 +18,7 @@ public partial class MainPage : ContentPage
     int batteryLevel = int.Parse($"{Battery.ChargeLevel * 100:F0}");
 
     readonly Random rand = new Random();
+    private readonly IAudioManager audioManager;
 
     public class BatteryMonitor
     {
@@ -42,9 +44,12 @@ public partial class MainPage : ContentPage
         }
     }
 
-    public MainPage()
+    public MainPage(IAudioManager audioManager)
     {
         InitializeComponent();
+
+        this.audioManager = audioManager;
+
 
         UpdateLabelWithBatteryPercentage();
         UpdateDoomFace(1);
@@ -345,40 +350,48 @@ public partial class MainPage : ContentPage
         }
     }
 
-    private void OnCounterClicked(object sender, EventArgs e)
+    private async void OnCounterClicked(object sender, EventArgs e)
     {
         count++;
 
         if (count == 1)
-            CounterBtn.Text = $"Clicked {count} time";
+            CounterBtn.Text = $"Pumped {count} time";
         else
-            CounterBtn.Text = $"Clicked {count} times";
+            CounterBtn.Text = $"Pumped {count} times";
 
         SemanticScreenReader.Announce(CounterBtn.Text);
 
+
+        var player = audioManager.CreatePlayer(await FileSystem.OpenAppPackageFileAsync("dswpnup.wav"));
+        player.Play();
+
         UpdateLabelWithBatteryPercentage();
         UpdateDoomFace(7);
-
     }
 
     /// <summary>
     /// <para>Play Damage Sound, when battery is draining 🔋⬇️</para>
-    /// Creates a temp audio file with UnmanagedMemoryStream Resource dsplpain 📜🔊
+    /// OpenAppPackageFileAsync dsplpain 📜🔊
     /// </summary>
-    private void PlayPainSoundFromResource()
+    private async void PlayPainSoundFromResource()
     {
-        UnmanagedMemoryStream unmanagedMemoryStream = SoundResource.dsplpain;
 
-        string tempFilePath = Path.Combine(Path.GetTempPath(), "tempaudio1.wav");
+        var player = audioManager.CreatePlayer(await FileSystem.OpenAppPackageFileAsync("dsplpain.wav"));
 
-        // Write the UnmanagedMemoryStream to the temporary file
-        using (var fileStream = File.Create(tempFilePath))
-        {
-            unmanagedMemoryStream.CopyTo(fileStream);
-        }
+        player.Play();
 
-        MyMedia.Source = MediaSource.FromFile(tempFilePath);
-        MyMedia.Play();
+        //UnmanagedMemoryStream unmanagedMemoryStream = SoundResource.dsplpain;
+
+        //string tempFilePath = Path.Combine(Path.GetTempPath(), "tempaudio1.wav");
+
+        //// Write the UnmanagedMemoryStream to the temporary file
+        //using (var fileStream = File.Create(tempFilePath))
+        //{
+        //    unmanagedMemoryStream.CopyTo(fileStream);
+        //}
+
+        //MyMedia.Source = MediaSource.FromFile(tempFilePath);
+        //MyMedia.Play();
     }
 
     /// <summary>
@@ -396,6 +409,11 @@ public partial class MainPage : ContentPage
         {
             unmanagedMemoryStream.CopyTo(fileStream);
         }
+
+
+        //var player = audioManager.CreatePlayer(await FileSystem.OpenAppPackageFileAsync("dsgetpow.wav"));
+
+        //player.Play();
 
         MyMedia.Source = MediaSource.FromFile(tempFilePath);
         MyMedia.Play();
