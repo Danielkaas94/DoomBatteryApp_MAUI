@@ -1,5 +1,4 @@
-﻿//using DoomBatteryApp_MAUI.Properties;
-using Plugin.Maui.Audio;
+﻿using Plugin.Maui.Audio;
 
 namespace DoomBatteryApp_MAUI;
 
