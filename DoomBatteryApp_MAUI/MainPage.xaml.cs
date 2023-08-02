@@ -1,7 +1,5 @@
-﻿using CommunityToolkit.Maui.Views;
-using DoomBatteryApp_MAUI.Properties;
+﻿//using DoomBatteryApp_MAUI.Properties;
 using Plugin.Maui.Audio;
-using System.Media;
 
 namespace DoomBatteryApp_MAUI;
 
@@ -375,88 +373,42 @@ public partial class MainPage : ContentPage
     /// </summary>
     private async void PlayPainSoundFromResource()
     {
-
         var player = audioManager.CreatePlayer(await FileSystem.OpenAppPackageFileAsync("dsplpain.wav"));
 
         player.Play();
-
-        //UnmanagedMemoryStream unmanagedMemoryStream = SoundResource.dsplpain;
-
-        //string tempFilePath = Path.Combine(Path.GetTempPath(), "tempaudio1.wav");
-
-        //// Write the UnmanagedMemoryStream to the temporary file
-        //using (var fileStream = File.Create(tempFilePath))
-        //{
-        //    unmanagedMemoryStream.CopyTo(fileStream);
-        //}
-
-        //MyMedia.Source = MediaSource.FromFile(tempFilePath);
-        //MyMedia.Play();
     }
 
     /// <summary>
     /// <para>Play Shotgun Sound, when charging 🔫🔊🔋🔌</para>
-    /// Creates a temp audio file with UnmanagedMemoryStream Resource dswpnup 📜🔊
+    /// OpenAppPackageFileAsync dswpnup 📜🔊
     /// </summary>
-    private void PlayWeaponPickupSoundFromResource()
+    private async void PlayWeaponPickupSoundFromResource()
     {
-        UnmanagedMemoryStream unmanagedMemoryStream = SoundResource.dswpnup;
+        var player = audioManager.CreatePlayer(await FileSystem.OpenAppPackageFileAsync("dswpnup.wav"));
 
-        string tempFilePath = Path.Combine(Path.GetTempPath(), "tempaudio2.wav");
-
-        // Write the UnmanagedMemoryStream to the temporary file
-        using (var fileStream = File.Create(tempFilePath))
-        {
-            unmanagedMemoryStream.CopyTo(fileStream);
-        }
-
-
-        //var player = audioManager.CreatePlayer(await FileSystem.OpenAppPackageFileAsync("dsgetpow.wav"));
-
-        //player.Play();
-
-        MyMedia.Source = MediaSource.FromFile(tempFilePath);
-        MyMedia.Play();
+        player.Play();
     }
 
     /// <summary>
     /// <para>Play Item Sound, when battery is charging 🔋⬆️</para>
-    /// Creates a temp audio file with UnmanagedMemoryStream Resource dsitemup 📜🔊
+    /// OpenAppPackageFileAsync dsitemup 📜🔊
     /// </summary>
-    private void PlayItemSoundFromResource()
+    private async void PlayItemSoundFromResource()
     {
-        UnmanagedMemoryStream unmanagedMemoryStream = SoundResource.dsitemup;
+        var player = audioManager.CreatePlayer(await FileSystem.OpenAppPackageFileAsync("dsitemup.wav"));
 
-        string tempFilePath = Path.Combine(Path.GetTempPath(), "tempaudio3.wav");
-
-        // Write the UnmanagedMemoryStream to the temporary file
-        using (var fileStream = File.Create(tempFilePath))
-        {
-            unmanagedMemoryStream.CopyTo(fileStream);
-        }
-
-        MyMedia.Source = MediaSource.FromFile(tempFilePath);
-        MyMedia.Play();
+        player.Play();
     }
 
     /// <summary>
     /// <para>Play Power Up Sound, when battery hit 100% 🔵🔋⬆️</para>
-    /// Creates a temp audio file with UnmanagedMemoryStream Resource dsgetpow 📜🔊
+    /// OpenAppPackageFileAsync dsgetpow 📜🔊
     /// </summary>
-    private void PlayPowerUpSoundFromResource()
+    private async void PlayPowerUpSoundFromResource()
     {
-        UnmanagedMemoryStream unmanagedMemoryStream = SoundResource.dsgetpow;
+        var player = audioManager.CreatePlayer(await FileSystem.OpenAppPackageFileAsync("dsgetpow.wav"));
 
-        string tempFilePath = Path.Combine(Path.GetTempPath(), "tempaudio4.wav");
-
-        // Write the UnmanagedMemoryStream to the temporary file
-        using (var fileStream = File.Create(tempFilePath))
-        {
-            unmanagedMemoryStream.CopyTo(fileStream);
-        }
-
-        MyMedia.Source = MediaSource.FromFile(tempFilePath);
-        MyMedia.Play();
+        player.Play();
     }
 
 

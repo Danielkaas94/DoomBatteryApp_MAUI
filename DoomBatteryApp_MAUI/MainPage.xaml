@@ -2,8 +2,7 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="DoomBatteryApp_MAUI.MainPage"
-             xmlns:embedded="clr-namespace:Microsoft.Maui.Controls;assembly=Microsoft.Maui.Controls"
-             xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit">
+             xmlns:embedded="clr-namespace:Microsoft.Maui.Controls;assembly=Microsoft.Maui.Controls">
 
     <ScrollView>
         <VerticalStackLayout
@@ -11,11 +10,6 @@
             Padding="30,0"
             VerticalOptions="Center">
 
-            <toolkit:MediaElement
-                x:Name="MyMedia"
-                Source=" "
-                ShouldShowPlaybackControls="False" IsVisible="False"/>
-            
             <Image
                 x:Name="DoomGuyImage"
                 Source=" "
@@ -26,7 +20,7 @@
             <Label
                 x:Name="Label_Hello"
                 FontAttributes="Bold"
-                TextColor="red"
+                TextColor="Red"
                 Text="Hello, World!"
                 SemanticProperties.HeadingLevel="Level1"
                 FontSize="64"
