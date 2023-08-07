@@ -358,9 +358,7 @@ public partial class MainPage : ContentPage
 
         SemanticScreenReader.Announce(CounterBtn.Text);
 
-
-        var player = audioManager.CreatePlayer(await FileSystem.OpenAppPackageFileAsync("dswpnup.wav"));
-        player.Play();
+        PlayWeaponPickupSoundFromResource();
 
         UpdateLabelWithBatteryPercentage();
         UpdateDoomFace(7);
