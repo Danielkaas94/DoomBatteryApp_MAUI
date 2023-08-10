@@ -173,7 +173,7 @@ public partial class MainPage : ContentPage
     private async Task SmileGetPower(int delay)
     {
         // Initial behavior when going from BatteryState.Discharging to BatteryState.Charging
-        if (batteryState_old == BatteryState.Discharging && Battery.State == BatteryState.Charging)
+        if ((batteryState_old == BatteryState.Discharging || batteryState_old == BatteryState.NotCharging) && Battery.State == BatteryState.Charging)
         {
 
             #region Big Smile 😁
@@ -201,7 +201,7 @@ public partial class MainPage : ContentPage
             }
 
             #endregion
-
+            await System.Threading.Tasks.Task.Delay(delay);
             PlayWeaponPickupSoundFromResource();
             await System.Threading.Tasks.Task.Delay(delay);
         }
