@@ -185,19 +185,19 @@ public partial class MainPage : ContentPage
             }
             else if (batteryLevel <= 79 && batteryLevel >= 60) // Doom Mussed
             {
-                DoomGuyImage.Source = "s_doomm.png"; // Smile Doom Good Face
+                DoomGuyImage.Source = "s_doomm.png"; // Smile Doom Mussed
             }
             else if (batteryLevel <= 59 && batteryLevel >= 40) // Doom Swollen
             {
-                DoomGuyImage.Source = "s_dooms.png"; // Smile Doom Good Face
+                DoomGuyImage.Source = "s_dooms.png"; // Smile Doom Swollen
             }
             else if (batteryLevel <= 39 && batteryLevel >= 20) // Doom Dirty
             {
-                DoomGuyImage.Source = "s_doomd.png"; // Smile Doom Good Face
+                DoomGuyImage.Source = "s_doomd.png"; // Smile Doom Dirty
             }
             else if (batteryLevel <= 19 && batteryLevel >= 1) // Doom Bloody
             {
-                DoomGuyImage.Source = "s_doomb.png"; // Smile Doom Good Face
+                DoomGuyImage.Source = "s_doomb.png"; // Smile Doom Bloody
             }
 
             #endregion
